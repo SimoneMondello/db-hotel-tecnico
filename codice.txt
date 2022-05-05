@@ -1,0 +1,51 @@
+Configurazione stanza: 
+CREATE TABLE [dbo].[configurazione_stanza]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [nome_stanza] VARCHAR(50) NOT NULL, 
+    [tipo_stanza] TEXT NOT NULL, 
+    [descrizione_stanza] TEXT NOT NULL 
+)
+
+
+ospiti:
+CREATE TABLE [dbo].[ospiti]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [nome] VARCHAR(50) NOT NULL, 
+    [cognome] VARCHAR(50) NOT NULL, 
+    [data_nascita] DATE NOT NULL, 
+    [tipo_documento] VARCHAR(50) NOT NULL, 
+    [numero_documento] CHAR(20) NOT NULL
+	
+    
+)
+
+prenotazioni:
+CREATE TABLE [dbo].[prenotazioni]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [stato_pagamento] NCHAR(10) NOT NULL, 
+    [numero_stanza] SMALLINT NOT NULL
+	,
+    [stanza_id] INT NOT NULL, 
+    [configurazione_id] INT NOT NULL, 
+    CONSTRAINT [prenotazioni_stanze_id_foreign] FOREIGN KEY ([stanza_id]) REFERENCES [dbo].[stanze] ([id]),
+	CONSTRAINT [prenotazioni_configurazione_id_foreign] FOREIGN KEY ([configurazione_id]) REFERENCES [dbo].[configurazione_stanza] ([id]),
+	);
+
+stanze:
+
+CREATE TABLE [dbo].[stanze]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [numero_stanza] SMALLINT NOT NULL, 
+    [piano] TINYINT NOT NULL, 
+    [numero_letti] SMALLINT NOT NULL, 
+    [stanze_id] INT NOT NULL
+)
+
+
+
+
+
