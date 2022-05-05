@@ -1,0 +1,41 @@
+1-
+SELECT name, lastname, date_of_birth, document_type, document_number
+FROM ospiti
+WHERE document_type = 'CI';
+
+2-
+
+SELECT name, lastname, date_of_birth, document_type, document_number
+FROM ospiti
+WHERE date_of_birth >=  '1988-01-01';
+
+3-
+
+SELECT name, lastname, date_of_birth, document_type, document_number
+FROM ospiti
+WHERE name LIKE 'd%'
+
+4-
+SELECT SUM(price)
+FROM  pagamenti
+WHERE status = 'accepted';
+
+5-
+SELECT MAX(Price) AS LargestPrice
+FROM pagamenti;
+
+6-
+
+SELECT SUM(beds) AS "NUMERO POSTI"
+FROM  stanze;
+
+7-
+SELECT sum(price) as "totale", status AS "PAGAMENTI PER TIPO"
+FROM pagamenti
+GROUP BY status;
+
+8-
+SELECT count(stanza_id) as "totale"
+FROM prenotazioni
+GROUP BY stanza_id;
+
